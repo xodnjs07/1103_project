@@ -58,10 +58,10 @@ h1 {
 
 .summary-panel {
   display: grid;
-  grid-template-columns: minmax(190px, 0.72fr) 1.8fr;
-  gap: 30px;
+  grid-template-columns: minmax(190px, 0.55fr) 1.8fr;
+  gap: 28px;
   align-items: center;
-  padding: 30px 34px;
+  padding: 32px 34px;
   border: 1px solid #e4ecf5;
   border-radius: 22px;
   background: rgba(255, 255, 255, 0.92);
@@ -93,35 +93,59 @@ select:focus-visible {
   border-color: #3478c8;
 }
 
-.average {
+.air-status {
+  min-width: 0;
   padding-left: 30px;
   border-left: 1px solid #e7edf4;
 }
 
-.average h2 {
-  margin-bottom: 4px;
+.air-status h2 {
+  margin-bottom: 10px;
   color: #56657a;
   font-size: 0.96rem;
   font-weight: 700;
 }
 
-.average > p {
+.signal-line {
   display: flex;
-  gap: 8px;
+  flex-wrap: wrap;
+  gap: 10px;
   align-items: baseline;
-  margin-bottom: 3px;
 }
 
-.average strong {
+.status-emoji {
+  align-self: center;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  line-height: 1;
+}
+
+.status-label {
   color: #172338;
-  font-size: clamp(2.6rem, 7vw, 4.2rem);
-  letter-spacing: -0.07em;
-  line-height: 1.15;
+  font-size: clamp(1.7rem, 4.5vw, 2.8rem);
+  letter-spacing: -0.06em;
+  line-height: 1.2;
 }
 
-.average > p span {
+.average-value {
+  margin-left: 4px;
+  color: #172338;
+  font-size: clamp(2rem, 5.2vw, 3.4rem);
+  font-weight: 850;
+  letter-spacing: -0.07em;
+  line-height: 1.2;
+}
+
+.unit {
   color: #66758a;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
+}
+
+.air-guidance {
+  min-height: 1.4em;
+  margin: 8px 0 4px;
+  color: #4b5c72;
+  font-size: 0.96rem;
+  font-weight: 700;
 }
 
 .average-description {
@@ -129,8 +153,57 @@ select:focus-visible {
   font-size: 0.82rem;
 }
 
+.air-status.grade-1 .status-emoji,
+.air-status.grade-1 .status-label {
+  color: #2874c8;
+}
+
+.air-status.grade-2 .status-emoji,
+.air-status.grade-2 .status-label {
+  color: #25834a;
+}
+
+.air-status.grade-3 .status-emoji,
+.air-status.grade-3 .status-label {
+  color: #c76b14;
+}
+
+.air-status.grade-4 .status-emoji,
+.air-status.grade-4 .status-label {
+  color: #c63a3a;
+}
+
+.air-status.is-loading .status-label,
+.air-status.is-unknown .status-label {
+  color: #68778b;
+}
+
 .station-section {
   margin-top: 42px;
+}
+
+.chart-section {
+  margin-top: 38px;
+}
+
+.chart-caption {
+  color: #748197;
+  font-size: 0.88rem;
+}
+
+.chart-container {
+  position: relative;
+  min-height: 220px;
+  height: 360px;
+  padding: 18px 20px;
+  border: 1px solid #e4ecf5;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 8px 22px rgba(37, 66, 103, 0.05);
+}
+
+.chart-container[hidden] {
+  display: none;
 }
 
 .section-heading {
@@ -168,22 +241,27 @@ select:focus-visible {
 }
 
 .station-card.grade-1 {
+  border-color: #b7d4f4;
   background: #e8f2ff;
 }
 
 .station-card.grade-2 {
+  border-color: #b9dfc4;
   background: #e8f6ec;
 }
 
 .station-card.grade-3 {
+  border-color: #f0d0a8;
   background: #fff1df;
 }
 
 .station-card.grade-4 {
+  border-color: #efc1c1;
   background: #ffebeb;
 }
 
 .station-card.grade-unknown {
+  border-color: #d4d9df;
   background: #edf0f3;
 }
 
@@ -291,7 +369,7 @@ select:focus-visible {
     border-radius: 18px;
   }
 
-  .average {
+  .air-status {
     padding: 18px 0 0;
     border-top: 1px solid #e7edf4;
     border-left: 0;
@@ -299,6 +377,15 @@ select:focus-visible {
 
   .station-section {
     margin-top: 32px;
+  }
+
+  .chart-section {
+    margin-top: 30px;
+  }
+
+  .chart-container {
+    height: 360px;
+    padding: 12px 8px;
   }
 
   .station-list {

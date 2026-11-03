@@ -7,6 +7,7 @@
   <meta name="theme-color" content="#f3f7fb">
   <title>우리 동네 대기질</title>
   <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
   <script src="script.js" defer></script>
 </head>
 <body>
@@ -41,10 +42,27 @@
           <option value="제주">제주</option>
         </select>
       </div>
-      <div class="average">
-        <h2 id="summary-title"><span id="selected-region">전국</span> 평균 미세먼지</h2>
-        <p><strong id="average-value" aria-live="polite">불러오는 중</strong><span>㎍/㎥</span></p>
+      <div id="air-status" class="air-status is-loading" aria-live="polite">
+        <h2 id="summary-title"><span id="selected-region">전국</span> 공기 신호등</h2>
+        <div class="signal-line">
+          <span id="status-emoji" class="status-emoji" aria-hidden="true">⏳</span>
+          <strong id="status-label" class="status-label">불러오는 중...</strong>
+          <span id="average-value" class="average-value">--</span>
+          <span class="unit">㎍/㎥</span>
+        </div>
+        <p id="air-guidance" class="air-guidance">대기질 정보를 확인하고 있습니다.</p>
         <span id="average-description" class="average-description">측정소 자료를 불러오고 있습니다.</span>
+      </div>
+    </section>
+
+    <section class="chart-section" aria-labelledby="chart-title">
+      <div class="section-heading">
+        <h2 id="chart-title">미세먼지 높은 측정소</h2>
+        <span class="chart-caption">수치가 높은 순 상위 10곳</span>
+      </div>
+      <div id="chart-message" class="status-message" role="status" aria-live="polite" hidden></div>
+      <div id="chart-container" class="chart-container">
+        <canvas id="dust-chart" role="img" aria-label="측정소별 미세먼지 수치 가로 막대그래프"></canvas>
       </div>
     </section>
 
