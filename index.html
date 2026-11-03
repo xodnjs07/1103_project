@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <!-- 시도별 실시간 대기질을 보여주는 화면입니다. -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f3f7fb">
+  <title>우리 동네 대기질</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="app">
+    <header class="page-header">
+      <p class="eyebrow">실시간 대기질 정보</p>
+      <h1>우리 동네 대기질</h1>
+      <p class="intro">시도를 선택해 측정소별 미세먼지 정보를 확인하세요.</p>
+    </header>
+
+    <section class="summary-panel" aria-labelledby="summary-title">
+      <div class="toolbar">
+        <label for="region-select">시도 선택</label>
+        <select id="region-select" aria-label="시도 선택">
+          <option value="전국">전국</option>
+          <option value="서울">서울</option>
+          <option value="부산">부산</option>
+          <option value="대구">대구</option>
+          <option value="인천">인천</option>
+          <option value="광주">광주</option>
+          <option value="대전">대전</option>
+          <option value="울산">울산</option>
+          <option value="세종">세종</option>
+          <option value="경기">경기</option>
+          <option value="강원">강원</option>
+          <option value="충북">충북</option>
+          <option value="충남">충남</option>
+          <option value="전북">전북</option>
+          <option value="전남">전남</option>
+          <option value="경북">경북</option>
+          <option value="경남">경남</option>
+          <option value="제주">제주</option>
+        </select>
+      </div>
+      <div class="average">
+        <h2 id="summary-title"><span id="selected-region">전국</span> 평균 미세먼지</h2>
+        <p><strong id="average-value" aria-live="polite">불러오는 중</strong><span>㎍/㎥</span></p>
+        <span id="average-description" class="average-description">측정소 자료를 불러오고 있습니다.</span>
+      </div>
+    </section>
+
+    <section class="station-section" aria-labelledby="stations-title">
+      <div class="section-heading">
+        <h2 id="stations-title">측정소별 대기질</h2>
+        <span id="station-count" class="station-count"></span>
+      </div>
+      <div id="status-message" class="status-message" role="status" aria-live="polite">자료를 불러오고 있습니다.</div>
+      <div id="station-list" class="station-list"></div>
+    </section>
+  </main>
+</body>
+</html>
